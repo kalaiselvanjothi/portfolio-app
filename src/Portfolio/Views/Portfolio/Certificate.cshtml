@@ -1,0 +1,18 @@
+@model CertificateViewModel
+
+@{
+    ViewData["Title"] = "Certificates";
+}
+<h2 class="h3 fw-semibold mb-4" data-aos="fade-down">Certificates</h2>
+<div class="row g-4">
+    @foreach (var certificate in Model.Certificates)
+    {
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="glass-card p-4 h-100">
+                <h3 class="h6 fw-bold">@certificate.Title</h3>
+                <p class="text-muted small">@certificate.Issuer - @certificate.IssuedDate.ToString("dd-MM-yyyy")</p>
+                <a href="@certificate.CertificateUrl" target="_blank" class="btn btn-electric">View Certificate</a>
+            </div>
+        </div>
+    }
+</div>

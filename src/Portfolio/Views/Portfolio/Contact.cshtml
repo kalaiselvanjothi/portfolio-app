@@ -1,0 +1,37 @@
+@model ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+    bool? isContactFormSubmitted = Model.IsContactFormSubmitted;
+}
+
+<h2 class="h3 fw-semibold mb-3" data-aos="fade-down">Contact (This demo doesn't send email)</h2>
+
+@if (isContactFormSubmitted == true)
+{
+    <div class="alert alert-success">Thanks @Model.SenderName, Your message has been "sent". (This demo doesn't send email yet)</div>
+}
+else if (isContactFormSubmitted == false)
+{
+    <div class="alert alert-danger">Error: Please ensure all fields are filled out correctly.</div>
+}
+
+<form method="post" class="glass-card p-4" data-aos="fade-up">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Name</label>
+            <input class="form-control" name="name" required />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input class="form-control" type="email" name="email" required />
+        </div>
+        <div class="col-12">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" name="message" rows="4" required></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-electric">Send Message</button>
+        </div>
+    </div>
+</form>

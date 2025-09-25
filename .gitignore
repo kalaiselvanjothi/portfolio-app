@@ -1,0 +1,11 @@
+
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.DS_Store
+*/node_modules/
+.vscode/
+
+.fake

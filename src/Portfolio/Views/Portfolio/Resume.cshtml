@@ -1,0 +1,14 @@
+@model ResumeViewModel
+
+@{
+    ViewData["Title"] = "Resume";
+    var resume = Model.Resume;
+}
+
+<div class="resume-container" data-aos="fade-up">
+    <h2>Resume</h2>
+    <a href="@resume.ResumeUrl" download class="btn-electric">Download Resume</a>
+    <p class="last-updated">Last updated on: @resume.LastUpdated.ToString("dd-MM-yyyy")</p>
+    <iframe src="@resume.ResumeUrl"></iframe>
+</div>
+

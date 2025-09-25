@@ -1,0 +1,20 @@
+@model SkillViewModel
+
+@{
+    ViewData["Title"] = "Skills";
+}
+
+<h2 class="h3 fw-semibold mb-4 text-center" data-aos="fade-down">Skills</h2>
+
+<div class="row g-4 text-center">
+    @foreach (var skill in Model.Skills)
+    {
+        <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+            <div class="skill-card p-4">
+                <img src="@Url.Content(skill.LogoPath)" alt="@skill.Name" class="skill-icon mb-3" />
+                <h5>@skill.Name</h5>
+                <p class="text-muted small">@skill.Category</p>
+            </div>
+        </div>
+    }
+</div>
