@@ -1,0 +1,10 @@
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+.vscode/
+*.git/
+*.gitignore
+docker-compose.override.yml
+*.env

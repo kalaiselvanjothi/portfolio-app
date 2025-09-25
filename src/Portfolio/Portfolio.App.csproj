@@ -9,9 +9,6 @@
     <AssemblyName>Portfolio.App</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Properties\launchSettings.json" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
   </ItemGroup>
 </Project>
