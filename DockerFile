@@ -2,25 +2,28 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy csproj first and restore dependencies
-COPY src/App/*.csproj ./ 
+# Copy solution and project files
+COPY *.sln ./
+COPY src/App/*.csproj ./src/App/
+
+# Restore dependencies using the solution
 RUN dotnet restore
 
 # Copy all source code
-COPY src/App/. ./ 
+COPY . ./
 
 # Build and publish the project
-RUN dotnet publish -c Release -o out
+RUN dotnet publish src/App/Portfolio.App.csproj -c Release -o out
 
 # Stage 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
-# Copy published output from build stage
+# Copy published output
 COPY --from=build /app/out ./
 
-# Expose port 80
+# Expose port
 EXPOSE 80
 
-# Start the application
+# Run the app
 ENTRYPOINT ["dotnet", "Portfolio.App.dll"]
