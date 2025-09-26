@@ -6,13 +6,13 @@ WORKDIR /app
 COPY *.sln ./
 COPY src/App/*.csproj ./src/App/
 
-# Restore dependencies using the solution
+# Restore dependencies
 RUN dotnet restore
 
 # Copy all source code
 COPY . ./
 
-# Build and publish the project
+# Publish the project
 RUN dotnet publish src/App/Portfolio.App.csproj -c Release -o out
 
 # Stage 2: Runtime
@@ -22,8 +22,8 @@ WORKDIR /app
 # Copy published output
 COPY --from=build /app/out ./
 
-# Expose port
+# Expose port 80
 EXPOSE 80
 
-# Run the app
+# Start the app
 ENTRYPOINT ["dotnet", "Portfolio.App.dll"]
